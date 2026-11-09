@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/seankobu/domains/skkstudio.com/public_html/
+    - rsync -r --exclude='.git' --exclude='.gitignore' --exclude='.cpanel.yml' --exclude='scss' --exclude='.sass-cache' . $DEPLOYPATH

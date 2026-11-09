@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Logs & temp
+*.log
+*.tmp
+*.swp
+
+# Secrets
+.env
+.env.*
+
+# Node
+node_modules/
+
+# Sass cache
+.sass-cache/
+*.css.map
