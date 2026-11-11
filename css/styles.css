@@ -109,13 +109,16 @@ h2 {
     max-width: 1320px;
     display: flex;
     align-items: center;
-    justify-content: space-between; }
-  @media (max-width: 768px) {
-    .site-header .btn--outline {
-      display: none; } }
+    justify-content: space-between;
+    gap: 1.5rem; }
+  .site-header .btn--outline {
+    margin-left: auto; }
+    @media (max-width: 768px) {
+      .site-header .btn--outline {
+        display: none; } }
 
 .menu-toggle {
-  display: none;
+  display: flex;
   position: relative;
   z-index: 201;
   width: 2.5rem;
@@ -140,9 +143,6 @@ h2 {
       transform: translateY(4.25px) rotate(45deg); }
     .menu-toggle.is-active span:last-child {
       transform: translateY(-4.25px) rotate(-45deg); }
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: flex; } }
 
 .mobile-nav {
   position: fixed;
@@ -153,6 +153,7 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   padding: 5rem clamp(1.5rem, 5vw, 3rem) 3rem;
+  overflow-y: auto;
   visibility: hidden;
   clip-path: circle(0px at 100% 0);
   transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.6s; }
@@ -419,11 +420,21 @@ h2 {
       background-color: rgba(255, 255, 255, 0.08); }
 
 .service-card {
+  position: relative;
+  isolation: isolate;
+  cursor: pointer;
   background-color: #FFFFFF;
-  padding: 2.5rem 2rem 2.75rem;
-  transition: background-color 0.35s cubic-bezier(0.4, 0, 0.2, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
-  .service-card:hover {
-    background-color: #EEF0F2; }
+  padding: 2.5rem 2rem 2.75rem; }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: #EEF0F2;
+    opacity: 0;
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+  .service-card:hover::before {
+    opacity: 1; }
   .service-card:hover .service-card__icon {
     color: #2C2F35; }
   .service-card__icon {
@@ -444,9 +455,10 @@ h2 {
     .service-card__title a {
       color: inherit;
       text-decoration: none; }
-      .service-card__title a:hover {
-        text-decoration: underline;
-        text-underline-offset: 3px; }
+      .service-card__title a::after {
+        content: '';
+        position: absolute;
+        inset: 0; }
   .service-card__desc {
     line-height: 1.65; }
   .service-card:nth-child(2) {
@@ -503,6 +515,10 @@ h2 {
     gap: 1rem; }
     .about__bio p {
       line-height: 1.8; }
+  .about__more {
+    margin-top: 2rem; }
+  .about--page {
+    padding: 2rem 0 6rem; }
 
 .coming-soon {
   margin-top: 12rem;
@@ -875,9 +891,11 @@ h2 {
     transform: translateY(0); } }
 .scroll-cta {
   position: absolute;
-  bottom: calc(80px + 4rem);
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 2.5rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;

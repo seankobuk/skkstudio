@@ -216,19 +216,21 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1.5rem;
   }
 
   .btn--outline {
+    margin-left: auto;
     @media (max-width: $bp-md) { display: none; }
   }
 }
 
 // ——————————————————————————————————————————
-// Hamburger Toggle (mobile only)
+// Hamburger Toggle
 // ——————————————————————————————————————————
 
 .menu-toggle {
-  display: none;
+  display: flex;
   position: relative;
   z-index: 201;
   width: 2.5rem;
@@ -257,10 +259,6 @@ h2 {
       &:last-child  { transform: translateY(-4.25px) rotate(-45deg); }
     }
   }
-
-  @media (max-width: $bp-md) {
-    display: flex;
-  }
 }
 
 // ——————————————————————————————————————————
@@ -276,6 +274,7 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   padding: 5rem $container-pad 3rem;
+  overflow-y: auto;
   visibility: hidden;
   clip-path: circle(0px at 100% 0);
   transition: clip-path 0.6s $ease-out, visibility 0s linear 0.6s;
@@ -629,14 +628,25 @@ h2 {
 }
 
 .service-card {
+  position: relative;
+  isolation: isolate;
+  cursor: pointer;
   background-color: $color-surface;
   padding: 2.5rem 2rem 2.75rem;
-  transition:
-    background-color $duration-base $ease-base,
-    color $duration-base $ease-base;
 
-  &:hover {
+  // Tint fades in on hover (on a pseudo-element so .reveal's transition doesn't override it)
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     background-color: $color-accent-tint;
+    opacity: 0;
+    transition: opacity .5s $ease-base;
+  }
+
+  &:hover::before {
+    opacity: 1;
   }
 
   &:hover .service-card__icon {
@@ -667,7 +677,12 @@ h2 {
       color: inherit;
       text-decoration: none;
 
-      &:hover { text-decoration: underline; text-underline-offset: 3px; }
+      // Stretch the link over the whole card
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+      }
     }
   }
 
@@ -750,6 +765,14 @@ h2 {
       @extend %body-muted;
       line-height: 1.8;
     }
+  }
+
+  &__more {
+    margin-top: 2rem;
+  }
+
+  &--page {
+    padding: 2rem 0 6rem;
   }
 }
 
@@ -1259,9 +1282,11 @@ h2 {
 
 .scroll-cta {
   position: absolute;
-  bottom: calc(80px + 4rem);
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 2.5rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
