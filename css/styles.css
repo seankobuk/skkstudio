@@ -7,7 +7,8 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  font-size: 16px; }
+  font-size: 16px;
+  overflow-x: hidden; }
 
 body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -15,9 +16,15 @@ body {
   line-height: 1.65;
   color: #1A1818;
   background-color: #F8F7F4;
+  background-image: radial-gradient(ellipse 55% 65% at 92% 35%, rgba(227, 223, 217, 0.5) 0%, transparent 70%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden; }
+  @media (max-width: 768px) {
+    body {
+      background-image: none;
+      background-attachment: initial; } }
 
 a {
   color: inherit;
@@ -119,7 +126,9 @@ h2 {
 
 .menu-toggle {
   display: flex;
-  position: relative;
+  position: fixed;
+  top: 1.25rem;
+  right: clamp(1.5rem, 5vw, 3rem);
   z-index: 201;
   width: 2.5rem;
   height: 2.5rem;
@@ -151,8 +160,9 @@ h2 {
   background-color: #2C2F35;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 5rem clamp(1.5rem, 5vw, 3rem) 3rem;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 2rem clamp(1.5rem, 5vw, 3rem);
   overflow-y: auto;
   visibility: hidden;
   clip-path: circle(0px at 100% 0);
@@ -167,6 +177,7 @@ h2 {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.3);
+    text-align: center;
     opacity: 0; }
     .mobile-nav.is-open .mobile-nav__label {
       animation: navLinkIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s forwards; }
@@ -180,6 +191,7 @@ h2 {
   .mobile-nav__link {
     display: flex;
     align-items: baseline;
+    justify-content: center;
     gap: 1rem;
     font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(2.5rem, 11vw, 4rem);
@@ -210,6 +222,7 @@ h2 {
   .mobile-nav__footer {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.5rem;
     opacity: 0;
     transform: translateY(12px); }
@@ -220,12 +233,14 @@ h2 {
     font-size: 1.125rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.85);
-    letter-spacing: 0.02em; }
+    letter-spacing: 0.02em;
+    text-align: center; }
   .mobile-nav__location {
     font-size: 0.85rem;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.35);
-    letter-spacing: 0.03em; }
+    letter-spacing: 0.03em;
+    text-align: center; }
 
 @keyframes navLinkIn {
   from {
@@ -266,16 +281,7 @@ h2 {
       align-items: flex-start;
       padding: 3rem 0 3rem; } }
   .hero__bg-glow {
-    position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 70vw;
-    height: 130%;
-    background: radial-gradient(ellipse 60% 50% at 70% 40%, rgba(227, 223, 217, 0.5) 0%, transparent 70%);
-    pointer-events: none; }
-    @media (max-width: 768px) {
-      .hero__bg-glow {
-        display: none; } }
+    display: none; }
   .hero__inner {
     position: relative;
     z-index: 1;

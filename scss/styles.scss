@@ -54,6 +54,7 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -62,9 +63,16 @@ body {
   line-height: 1.65;
   color: $color-text;
   background-color: $color-bg;
+  background-image: radial-gradient(ellipse 55% 65% at 92% 35%, rgba(#E3DFD9, 0.5) 0%, transparent 70%);
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+
+  @media (max-width: $bp-md) {
+    background-image: none;
+    background-attachment: initial;
+  }
 }
 
 a {
@@ -231,7 +239,9 @@ h2 {
 
 .menu-toggle {
   display: flex;
-  position: relative;
+  position: fixed;
+  top: 1.25rem;
+  right: $container-pad;
   z-index: 201;
   width: 2.5rem;
   height: 2.5rem;
@@ -272,8 +282,9 @@ h2 {
   background-color: $color-accent;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 5rem $container-pad 3rem;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 2rem $container-pad;
   overflow-y: auto;
   visibility: hidden;
   clip-path: circle(0px at 100% 0);
@@ -291,6 +302,7 @@ h2 {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: rgba(#fff, 0.3);
+    text-align: center;
     opacity: 0;
     .mobile-nav.is-open & { animation: navLinkIn 0.4s $ease-out 0.05s forwards; }
   }
@@ -309,6 +321,7 @@ h2 {
   &__link {
     display: flex;
     align-items: baseline;
+    justify-content: center;
     gap: 1rem;
     font-family: $font-display;
     font-size: clamp(2.5rem, 11vw, 4rem);
@@ -342,6 +355,7 @@ h2 {
   &__footer {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.5rem;
     opacity: 0;
     transform: translateY(12px);
@@ -354,6 +368,7 @@ h2 {
     font-weight: 500;
     color: rgba(#fff, 0.85);
     letter-spacing: 0.02em;
+    text-align: center;
   }
 
   &__location {
@@ -361,6 +376,7 @@ h2 {
     font-weight: 400;
     color: rgba(#fff, 0.35);
     letter-spacing: 0.03em;
+    text-align: center;
   }
 }
 
@@ -416,18 +432,7 @@ h2 {
   }
 
   &__bg-glow {
-    position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 70vw;
-    height: 130%;
-    background:
-      radial-gradient(ellipse 60% 50% at 70% 40%, rgba(#E3DFD9, 0.5) 0%, transparent 70%);
-    pointer-events: none;
-
-    @media (max-width: $bp-md) {
-      display: none;
-    }
+    display: none; // gradient moved to body background-image
   }
 
   &__inner {
