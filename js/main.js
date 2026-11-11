@@ -14,6 +14,32 @@
   }
 
   // ——————————————————————————————————————————
+  // Mobile Menu
+  // ——————————————————————————————————————————
+  var menuToggle = document.querySelector('.menu-toggle');
+  var mobileNav  = document.querySelector('.mobile-nav');
+
+  if (menuToggle && mobileNav) {
+    menuToggle.addEventListener('click', function () {
+      var isOpen = mobileNav.classList.toggle('is-open');
+      menuToggle.classList.toggle('is-active', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      mobileNav.setAttribute('aria-hidden', String(!isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    mobileNav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileNav.classList.remove('is-open');
+        menuToggle.classList.remove('is-active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  // ——————————————————————————————————————————
   // Back to Top — show near bottom of page
   // ——————————————————————————————————————————
   var backToTop = document.querySelector('.back-to-top');
@@ -37,6 +63,36 @@
       }
     }, { passive: true });
   }
+
+  // ——————————————————————————————————————————
+  // Hero Animation #5 — Cascade then Typewriter
+  // ——————————————————————————————————————————
+  (function () {
+    if (window.innerWidth < 769) return;
+
+    var eyebrow = document.querySelector('.hero__eyebrow');
+    var hero    = document.querySelector('.hero');
+    if (!eyebrow || !hero) return;
+
+    var fullText = eyebrow.textContent.trim();
+    eyebrow.textContent = '';
+
+    // Wait for cascade to finish (~2.4s), then type the eyebrow
+    setTimeout(function () {
+      eyebrow.classList.add('is-typing');
+      var i = 0;
+      function typeChar() {
+        if (i < fullText.length) {
+          eyebrow.textContent += fullText[i++];
+          setTimeout(typeChar, 48);
+        } else {
+          eyebrow.classList.remove('is-typing');
+          hero.classList.add('hero--typed');
+        }
+      }
+      typeChar();
+    }, 2400);
+  })();
 
   // ——————————————————————————————————————————
   // Reveal on scroll — IntersectionObserver

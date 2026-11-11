@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TCQZRPBM"></script>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TCQZRPBM"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -11,9 +11,54 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SKK Studio | Web Design, WordPress Development, SEO and Online Marketing, and AI Automations for businesses in the Berkshires and beyond.">
+  <meta name="robots" content="index, follow">
+  <title>Web Designer &amp; SEO Consultant | Berkshire County, MA | SKK Studio</title>
+  <meta name="description" content="Freelance web designer, WordPress developer, and SEO consultant serving Berkshire County MA, Litchfield County CT, and Columbia County NY. 20+ years of experience.">
   <meta name="author" content="Sean K Kennedy">
-  <title>SKK Studio | Web Design &amp; Digital Services | The Berkshires</title>
+  <link rel="canonical" href="https://skkstudio.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://skkstudio.com/">
+  <meta property="og:title" content="Web Designer &amp; SEO Consultant | Berkshire County, MA | SKK Studio">
+  <meta property="og:description" content="Freelance web designer, WordPress developer, and SEO consultant serving Berkshire County MA, Litchfield County CT, and Columbia County NY. 20+ years of experience.">
+  <meta property="og:image" content="https://skkstudio.com/img/Sean-K-Kennedy.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- LocalBusiness / ProfessionalService Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "SKK Studio",
+    "description": "Freelance web design, WordPress development, SEO, and AI automation services for businesses in Berkshire County MA, Litchfield County CT, and Columbia County NY.",
+    "url": "https://skkstudio.com",
+    "email": "seankobuk@gmail.com",
+    "founder": { "@type": "Person", "name": "Sean K Kennedy" },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Norfolk",
+      "addressRegion": "CT",
+      "addressCountry": "US"
+    },
+    "areaServed": [
+      { "@type": "AdministrativeArea", "name": "Berkshire County, Massachusetts" },
+      { "@type": "AdministrativeArea", "name": "Litchfield County, Connecticut" },
+      { "@type": "AdministrativeArea", "name": "Columbia County, New York" }
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web & Digital Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WordPress Development" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO & Online Marketing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Automations & Integrations" } }
+      ]
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -24,9 +69,30 @@
   <!-- ========== HEADER ========== -->
   <header class="site-header" id="site-header">
     <div class="container">
-      <a href="#" class="site-logo">SKK Studio</a>
+      <a href="#" class="site-logo"><span class="site-logo__skk">SKK</span> Studio</a>
+      <a class="btn btn--outline" href="tel:607-339-6898">Call: 607.339.6898</a>
+      <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-nav">
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
+
+  <!-- ========== MOBILE NAV ========== -->
+  <nav class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <p class="mobile-nav__label">Navigation</p>
+    <div class="mobile-nav__bottom">
+      <div class="mobile-nav__links">
+        <a class="mobile-nav__link" href="#services"><span>01</span>Services</a>
+        <a class="mobile-nav__link" href="#about"><span>02</span>About</a>
+        <a class="mobile-nav__link" href="mailto:seankobuk@gmail.com"><span>03</span>Get in Touch</a>
+      </div>
+      <div class="mobile-nav__footer">
+        <a class="mobile-nav__call" href="tel:607-339-6898">Call: 607.339.6898</a>
+        <p class="mobile-nav__location">Norfolk, CT &nbsp;·&nbsp; The Berkshires</p>
+      </div>
+    </div>
+  </nav>
 
   <main>
 
@@ -38,11 +104,14 @@
 
           <span class="hero__eyebrow">Available for new projects</span>
 
-          <h1 class="hero__name">Sean Kobuk<br>Kennedy</h1>
+          <h1 class="hero__h1">Freelance Web Designer &amp; SEO Consultant in The Berkshires</h1>
+
+          <p class="hero__name">Sean Kobuk<br>Kennedy</p>
 
           <p class="hero__tagline">
-            I can help you bring your ideas to life and improve your online presence
-            <!-- I design it. Build it. Make sure the right people find it. -->
+            Most freelancers do one thing. I've been doing design, development, seo & marketing for over 20 years.
+            I can help you bring your ideas to life and improve your online presence.
+            
           </p>
 
           <div class="hero__location">
@@ -58,7 +127,7 @@
           <!-- <p class="hero__status">
             New site on the way. Taking on new clients now.
           </p> -->
-          <div>
+          <div class="hero__cta-wrap">
           <a href="mailto:seankobuk@gmail.com" class="btn btn--primary hero__cta-btn">
             Get in Touch
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -71,7 +140,7 @@
       </div>
 
       <a class="scroll-cta" href="#services" aria-label="Scroll to services">
-        <span class="scroll-cta__label">View More</span>
+        <span class="scroll-cta__label">View Services</span>
         <svg class="scroll-cta__arrow" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M10 3v14M4 11l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -85,7 +154,7 @@
 
         <header class="section-header reveal">
           <span class="section-label">What I Do</span>
-          <h2 class="section-title">Services</h2>
+          <h2 class="section-title">Web Design &amp; Digital Services</h2>
           <p class="section-desc">I offer a range of services to help your business or organization succeed online.</p>
         </header>
 
@@ -101,7 +170,7 @@
                 <path d="M8 10h4M18 10h4M8 13h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
               </svg>
             </div>
-            <h3 class="service-card__title">Web Design</h3>
+            <h3 class="service-card__title"><a href="services.html#web-design"></a>Web Design</a></h3>
             <p class="service-card__desc">Sites that look good and keep people coming back. Built to fit your business, not a template.</p>
           </article>
 
@@ -114,7 +183,7 @@
                 <path d="M17 8l-4 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
               </svg>
             </div>
-            <h3 class="service-card__title">WordPress Development</h3>
+            <h3 class="service-card__title"><a href="services.html#wordpress"></a>WordPress Development</a></h3>
             <p class="service-card__desc">WordPress done right. Custom built for your needs, easy for you to manage yourself.</p>
           </article>
 
@@ -126,7 +195,7 @@
                 <path d="M9 17l3-4 3 2 4-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <h3 class="service-card__title">SEO &amp; Online Marketing</h3>
+            <h3 class="service-card__title"><a href="services.html#seo"></a>SEO &amp; Online Marketing</a></h3>
             <p class="service-card__desc">Get found by the right people in the right places. Local SEO with a quantifiable impact.</p>
           </article>
 
@@ -141,10 +210,53 @@
                 <path d="M11 8h6M11 22h6M8 11v6M22 11v6M12.5 12.5l-3-3M17.5 12.5l3-3M12.5 17.5l-3 3M17.5 17.5l3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
               </svg>
             </div>
-            <h3 class="service-card__title">AI Automations &amp; Integrations</h3>
+            <h3 class="service-card__title"><a href="services.html#ai-automations">AI Automations &amp; Integrations</a></h3>
             <p class="service-card__desc">Let AI handle the tedious tasks so you have more time to do what you enjoy.</p>
           </article>
 
+        </div>
+
+        <div class="services__more reveal">
+          <a href="services.html" class="btn btn--outline">View All Services</a>
+        </div>
+
+      </div>
+    </section>
+
+        <!-- ========== COMING SOON NOTICE ========== -->
+    <section class="coming-soon">
+      <div class="container">
+        <div class="coming-soon__inner reveal">
+          <p class="coming-soon__label">Just getting started</p>
+          <p class="coming-soon__text">Check back soon for work examples and case studies!</p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CLIENT LOGOS ========== -->
+    <section class="client-logos">
+      <p class="client-logos__label">A few clients I have worked with</p>
+      <div class="client-logos__outer">
+        <!-- track 1 -->
+        <div class="client-logos__track">
+          <img src="img/Cornell-University-logo.webp" alt="Cornell University" class="client-logos__img">
+          <img src="img/miraval-resorts-logo.webp" alt="Miraval Resorts" class="client-logos__img">
+          <img src="img/neighborworks-america-logo.webp" alt="NeighborWorks America" class="client-logos__img">
+          <img src="img/suny-cortland-logo.webp" alt="SUNY Cortland" class="client-logos__img">
+          <img src="img/PDXUnicornSeal.webp" alt="PDX Unicorn" class="client-logos__img">
+          <img src="img/martha-stewart-martha-stewart-logo.png" alt="Martha Stewart" class="client-logos__img">
+          <img src="img/Ongweoweh-logo.webp" alt="Ongweoweh" class="client-logos__img">
+        </div>
+        <!-- track 2: identical, hands off to track 1 seamlessly -->
+        <div class="client-logos__track" aria-hidden="true">
+          <img src="img/Cornell-University-logo.webp" alt="" class="client-logos__img">
+          <img src="img/miraval-resorts-logo.webp" alt="" class="client-logos__img">
+          <img src="img/neighborworks-america-logo.webp" alt="" class="client-logos__img">
+          <img src="img/suny-cortland-logo.webp" alt="" class="client-logos__img">
+          <img src="img/PDXUnicornSeal.webp" alt="" class="client-logos__img">
+          <img src="img/martha-stewart-martha-stewart-logo.png" alt="" class="client-logos__img">
+          <img src="img/Ongweoweh-logo.webp" alt="" class="client-logos__img">
         </div>
       </div>
     </section>
@@ -156,16 +268,16 @@
 
           <div class="about__photo-wrap">
             <figure class="about__photo">
-              <img src="img/Sean-K-Kennedy.webp" alt="Sean K Kennedy" onerror="this.parentElement.classList.add('about__photo--placeholder')">
+              <img src="img/Sean-Kobuk-Kennedy-web-designer-developer.webp" alt="Sean K Kennedy, freelance web designer and SEO consultant in Norfolk, CT" onerror="this.parentElement.classList.add('about__photo--placeholder')">
             </figure>
           </div>
 
           <div class="about__content">
             <span class="section-label">Who Am I</span>
-            <h2 class="about__title">A one-person shop with a lot of range.</h2>
+            <h2 class="about__title">A one-person shop for all things web</h2>
             <div class="about__bio">
-              <p>I'm Sean, a web designer and developer based in Norfolk, CT. I've been building sites and helping businesses figure out their online presence for 20+ years, working with everyone from local businesses to national brands nonprofits and universities.</p>
-              <p>Instead of hiring a designer, a developer, and an SEO person separately, you get all of that in one place. No handoffs, no miscommunication, and one easily reachable point of contact.</p>
+              <p>I'm Sean, a web designer and developer based in Norfolk, CT, serving businesses across Berkshire County, MA, Litchfield County, CT, and Columbia County, NY. I've been building sites and helping businesses grow their online presence for 20+ years, working with everyone from local shops to national brands, nonprofits, and universities.</p>
+              <p>I handle design, development, and SEO — no handoffs between teams, no miscommunication. One person, everything you need.</p>
             </div>
           </div>
 
@@ -173,16 +285,7 @@
       </div>
     </section>
 
-    <!-- ========== COMING SOON NOTICE ========== -->
-    <section class="coming-soon">
-      <div class="container">
-        <div class="coming-soon__inner reveal">
-          <span class="coming-soon__label">Site in Progress</span>
-          <p class="coming-soon__text">This site is new and growing. Work examples, detailed service pages, and case studies are on the way.</p>
-
-        </div>
-      </div>
-    </section>
+    <div class="section-divider"></div>
 
     <!-- ========== CONTACT CTA ========== -->
     <section class="contact-cta">

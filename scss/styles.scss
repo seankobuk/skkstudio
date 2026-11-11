@@ -217,18 +217,183 @@ h2 {
     align-items: center;
     justify-content: space-between;
   }
+
+  .btn--outline {
+    @media (max-width: $bp-md) { display: none; }
+  }
+}
+
+// ——————————————————————————————————————————
+// Hamburger Toggle (mobile only)
+// ——————————————————————————————————————————
+
+.menu-toggle {
+  display: none;
+  position: relative;
+  z-index: 201;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background-color: $color-text;
+    transition: transform 0.35s $ease-base, opacity 0.25s $ease-base, background-color 0.3s;
+  }
+
+  &.is-active {
+    span {
+      background-color: #fff;
+      &:first-child { transform: translateY(4.25px) rotate(45deg); }
+      &:last-child  { transform: translateY(-4.25px) rotate(-45deg); }
+    }
+  }
+
+  @media (max-width: $bp-md) {
+    display: flex;
+  }
+}
+
+// ——————————————————————————————————————————
+// Mobile Nav Overlay
+// ——————————————————————————————————————————
+
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background-color: $color-accent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5rem $container-pad 3rem;
+  visibility: hidden;
+  clip-path: circle(0px at 100% 0);
+  transition: clip-path 0.6s $ease-out, visibility 0s linear 0.6s;
+
+  &.is-open {
+    visibility: visible;
+    clip-path: circle(150% at 100% 0);
+    transition: clip-path 0.6s $ease-out, visibility 0s;
+  }
+
+  &__label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(#fff, 0.3);
+    opacity: 0;
+    .mobile-nav.is-open & { animation: navLinkIn 0.4s $ease-out 0.05s forwards; }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__link {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    font-family: $font-display;
+    font-size: clamp(2.5rem, 11vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: rgba(#fff, 0.88);
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(#fff, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: color $duration-fast $ease-base;
+
+    span {
+      font-family: $font-body;
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(#fff, 0.3);
+      letter-spacing: 0.04em;
+    }
+
+    &:hover { color: #fff; }
+
+    .mobile-nav.is-open & {
+      animation: navLinkIn 0.5s $ease-out forwards;
+      &:nth-child(1) { animation-delay: 0.15s; }
+      &:nth-child(2) { animation-delay: 0.22s; }
+      &:nth-child(3) { animation-delay: 0.29s; }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(12px);
+    .mobile-nav.is-open & { animation: navLinkIn 0.5s $ease-out 0.36s forwards; }
+  }
+
+  &__call {
+    font-family: $font-display;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: rgba(#fff, 0.85);
+    letter-spacing: 0.02em;
+  }
+
+  &__location {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(#fff, 0.35);
+    letter-spacing: 0.03em;
+  }
+}
+
+@keyframes navLinkIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .site-logo {
   font-family: $font-display;
   font-size: 2.55rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-weight: 900;
+  //letter-spacing: 0.08em;
   color: $color-text;
   transition: opacity $duration-fast $ease-base;
 
   &:hover {
     opacity: 0.65;
+  }
+
+  &__skk {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.25em;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background-color: #aaa;
+    }
   }
 }
 
@@ -244,6 +409,12 @@ h2 {
   min-height: calc(100vh - 6rem);
   padding-bottom: 5rem;
   overflow: hidden;
+
+  @media (max-width: $bp-md) {
+    min-height: unset;
+    align-items: flex-start;
+    padding: 3rem 0 3rem;
+  }
 
   &__bg-glow {
     position: absolute;
@@ -275,13 +446,22 @@ h2 {
     margin-bottom: 1.75rem;
 
     &::before {
-      content: '';
+      //: '';
       display: inline-block;
       width: 22px;
       height: 1.5px;
       background-color: currentColor;
       flex-shrink: 0;
     }
+  }
+
+  &__h1 {
+    font-family: $font-body;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-weight: 500;
+    color: $color-text-muted;
+    line-height: 1.4;
+    margin-bottom: 1.25rem;
   }
 
   &__name {
@@ -328,6 +508,76 @@ h2 {
 
 
 // ——————————————————————————————————————————
+// Client Logos
+// ——————————————————————————————————————————
+
+.client-logos {
+  padding: 3.5rem 0;
+  margin-top: calc(80px + 4rem);
+
+  @media (max-width: $bp-sm) {
+    padding: 1.5rem 0;
+    margin-top: calc(80px + 0.5rem);
+  }
+  background-color: $color-bg;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+  overflow: hidden;
+
+  &__label {
+    text-align: center;
+    //font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+    margin-bottom: 2rem;
+  }
+
+  &__outer {
+    display: flex;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+
+    &:hover .client-logos__track {
+      animation-play-state: paused;
+    }
+  }
+
+  &__track {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    flex-shrink: 0;
+    padding-right: 4rem; // matches gap so seam spacing is consistent
+    animation: logo-scroll 28s linear infinite;
+    will-change: transform;
+  }
+
+  &__img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: opacity 0.25s $ease-base, filter 0.25s $ease-base;
+    flex-shrink: 0;
+
+    &:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+
+// ——————————————————————————————————————————
 // Services
 // ——————————————————————————————————————————
 
@@ -337,7 +587,7 @@ h2 {
   padding: calc(6rem + 80px) 0;
   background-color: $color-accent;
   clip-path: polygon(0 80px, 100% 0, 100% calc(100% - 80px), 0 100%);
-  margin-top: 0;
+  margin-top: 3rem;
   margin-bottom: -80px;
 
   // Flip all text colors within the dark section
@@ -359,6 +609,22 @@ h2 {
 
   @media (min-width: $bp-lg) {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.services__more {
+  text-align: center;
+  margin-top: 3rem;
+
+  .btn--outline {
+    border-color: rgba(#fff, 0.35);
+    color: rgba(#fff, 0.85);
+
+    &:hover {
+      border-color: #fff;
+      color: #fff;
+      background-color: rgba(#fff, 0.08);
+    }
   }
 }
 
@@ -396,6 +662,13 @@ h2 {
     line-height: 1.2;
     color: $color-text;
     margin-bottom: 0.5rem;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover { text-decoration: underline; text-underline-offset: 3px; }
+    }
   }
 
   &__desc {
@@ -417,6 +690,10 @@ h2 {
 .about {
   padding: 10rem 0 6rem;
   background-color: $color-bg;
+
+  @media (max-width: $bp-sm) {
+    padding-top: 5rem;
+  }
 
   &__inner {
     display: grid;
@@ -482,6 +759,9 @@ h2 {
 // ——————————————————————————————————————————
 
 .coming-soon {
+  margin-top: 12rem;
+  max-width:600px;
+  margin-inline: auto;
   padding: 3rem 0;
   background-color: $color-accent;
 
@@ -491,17 +771,18 @@ h2 {
     gap: 1rem;
 
     @media (min-width: $bp-md) {
-      flex-direction: row;
-      align-items: baseline;
-      gap: 3rem;
+      flex-direction: column;
+      //align-items: baseline;
+      gap: 1rem;
     }
   }
 
   &__label {
     @extend %label-uppercase;
-    font-size: 1.125rem;
+    //font-size: 1.125rem;
     color: rgba(#FFFFFF, 0.5);
     flex-shrink: 0;
+    text-align: center;
   }
 
   &__text {
@@ -510,6 +791,7 @@ h2 {
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.3;
+    text-align: center;
     color: #FFFFFF;
 
     @media (min-width: $bp-md) {
@@ -535,11 +817,213 @@ h2 {
 
 
 // ——————————————————————————————————————————
+// Section Divider
+// ——————————————————————————————————————————
+
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background-color: $color-border;
+  margin: 0 auto;
+}
+
+// ——————————————————————————————————————————
+// Page Hero (sub-pages)
+// ——————————————————————————————————————————
+
+.page-hero {
+  padding: 4rem 0 5rem;
+  background-color: $color-bg;
+
+  @media (max-width: $bp-md) {
+    padding: 3rem 0 3.5rem;
+  }
+
+  &__breadcrumb {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: $color-text-muted;
+    letter-spacing: 0.03em;
+    margin-bottom: 2.5rem;
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      &:hover { color: $color-text; }
+    }
+  }
+
+  &__eyebrow {
+    @extend %label-uppercase;
+    display: block;
+    color: $color-text-muted;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: clamp(2.75rem, 6vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: $color-text;
+    margin-bottom: 1.5rem;
+  }
+
+  &__desc {
+    @extend %body-muted;
+    max-width: 52ch;
+    margin-bottom: 2.5rem;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+
+    span {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: $color-text-muted;
+      border-bottom: 1.5px solid $color-border;
+      padding-bottom: 0.25rem;
+    }
+  }
+}
+
+// ——————————————————————————————————————————
+// Service Detail Sections
+// ——————————————————————————————————————————
+
+.service-detail {
+  padding: 6rem 0;
+
+  &--light { background-color: $color-bg; }
+  &--dark  { background-color: $color-accent; }
+
+  @media (max-width: $bp-md) { padding: 4rem 0; }
+
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+
+    @media (min-width: $bp-lg) {
+      grid-template-columns: 3fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    &--reversed {
+      @media (min-width: $bp-lg) {
+        .service-detail__main  { order: 2; }
+        .service-detail__aside { order: 1; }
+      }
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  &__icon {
+    color: $color-text-muted;
+
+    .service-detail--dark & { color: rgba(#fff, 0.5); }
+  }
+
+  &__num {
+    font-family: $font-display;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: rgba($color-text, 0.07);
+    line-height: 1;
+
+    .service-detail--dark & { color: rgba(#fff, 0.07); }
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+
+    .service-detail--dark & { color: #fff; }
+  }
+
+  &__desc {
+    @extend %body-muted;
+    margin-bottom: 1.25rem;
+
+    .service-detail--dark & { color: rgba(#fff, 0.65); }
+  }
+
+  &__main .btn { margin-top: 1.5rem; }
+
+  &__aside {
+    background-color: $color-surface;
+    border: 1px solid $color-border;
+    padding: 2rem;
+
+    .service-detail--dark & {
+      background-color: rgba(#fff, 0.05);
+      border-color: rgba(#fff, 0.12);
+    }
+  }
+
+  &__aside-title {
+    @extend %label-uppercase;
+    font-size: 0.8rem;
+    color: $color-text-muted;
+    margin-bottom: 1.25rem;
+
+    .service-detail--dark & { color: rgba(#fff, 0.45); }
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+
+    li {
+      font-size: 1rem;
+      font-weight: 400;
+      color: $color-text;
+      padding-left: 1.5rem;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.45em;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background-color: $color-accent;
+      }
+
+      .service-detail--dark & {
+        color: rgba(#fff, 0.8);
+        &::before { background-color: rgba(#fff, 0.35); }
+      }
+    }
+  }
+}
+
+// ——————————————————————————————————————————
 // Contact CTA
 // ——————————————————————————————————————————
 
 .contact-cta {
   padding: 7rem 0 8rem;
+
+  @media (max-width: $bp-sm) {
+    padding-top: 5rem;
+  }
   //border-top: 4px solid #fff;
 
   &__inner {
@@ -579,6 +1063,10 @@ h2 {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 0.5rem 1rem;
+
+    @media (max-width: $bp-sm) {
+      justify-content: center;
+    }
   }
 
   &__location {
@@ -617,11 +1105,110 @@ h2 {
   }
 }
 
+// Mobile: animate the whole block as one
 .hero__inner {
-  opacity: 0;
-  transform: translateY(12px);
-  animation: fadeUp 0.9s $ease-out 0.15s forwards;
+  @media (max-width: $bp-md) {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.9s $ease-out 0.15s forwards;
+  }
 }
+
+/* ================================================================
+   ANIMATION #3 — Scale + Stagger (desktop) — saved for reference
+@media (min-width: 769px) {
+  .hero__eyebrow {
+    opacity: 0;
+    animation: heroFadeUp 0.55s $ease-out 0.05s forwards;
+  }
+  .hero__name {
+    opacity: 0;
+    animation: heroScale 0.9s $ease-out 0.18s forwards;
+  }
+  .hero__tagline {
+    opacity: 0;
+    animation: heroFadeUp 0.65s $ease-out 0.44s forwards;
+  }
+  .hero__location {
+    opacity: 0;
+    animation: heroFadeUp 0.55s $ease-out 0.58s forwards;
+  }
+  .hero__cta-wrap {
+    opacity: 0;
+    animation: heroFadeUp 0.55s $ease-out 0.70s forwards;
+  }
+  .scroll-cta {
+    opacity: 0;
+    animation: heroFadeUp 0.55s $ease-out 0.88s forwards;
+  }
+}
+================================================================ */
+
+/* ================================================================
+   ANIMATION #5 — Typewriter + Cascade (desktop)
+   ================================================================ */
+@media (min-width: 769px) {
+  // Eyebrow stays hidden; block-level flex + fixed height holds space while text is empty
+  .hero__eyebrow {
+    opacity: 0;
+    display: flex;
+    height: 1.75rem;
+  }
+
+  .hero__eyebrow.is-typing {
+    opacity: 1;
+    &::after {
+      content: '|';
+      margin-left: 2px;
+      font-weight: 300;
+      animation: cursorBlink 0.65s step-end infinite;
+    }
+  }
+
+  // Keep eyebrow visible once typing is done
+  .hero--typed .hero__eyebrow { opacity: 1; }
+
+  // Cascade fires immediately on load
+  // #4 gradient wipe on the name
+  // padding-bottom pulls the mask area down to include descenders (y, etc.)
+  .hero__name {
+    padding-bottom: 0.3em;
+    margin-bottom: calc(2rem - 0.3em);
+    -webkit-mask-image: linear-gradient(to right, black 60%, transparent 100%);
+    mask-image: linear-gradient(to right, black 60%, transparent 100%);
+    -webkit-mask-size: 300% 100%;
+    mask-size: 300% 100%;
+    -webkit-mask-position: 200% 0;
+    mask-position: 200% 0;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    animation: heroWipe 1.1s $ease-out 0.10s forwards;
+  }
+  .hero__h1       { opacity: 0; animation: heroFadeUp  0.9s $ease-out 0.35s forwards; }
+  .hero__tagline  { opacity: 0; animation: heroFadeUp  1.0s $ease-out 0.60s forwards; }
+  .hero__location { opacity: 0; animation: heroFadeUp  0.9s $ease-out 0.75s forwards; }
+  .hero__cta-wrap { opacity: 0; animation: heroFadeUp  0.9s $ease-out 1.05s forwards; }
+  .scroll-cta     { opacity: 0; animation: heroFadeUp  0.9s $ease-out 1.35s forwards; }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes heroWipe {
+  from {
+    -webkit-mask-position: 200% 0;
+    mask-position: 200% 0;
+  }
+  to {
+    -webkit-mask-position: 0% 0;
+    mask-position: 0% 0;
+  }
+}
+/* ================================================================
+   END ANIMATION #5
+   ================================================================ */
 
 // ——————————————————————————————————————————
 // ——————————————————————————————————————————
@@ -681,8 +1268,26 @@ h2 {
   gap: 0.5rem;
   cursor: pointer;
   opacity: 1;
-  transition: opacity 0.6s $ease-base;
+  transition: opacity 0.6s $ease-base, color $duration-fast $ease-base;
+
+  @media (max-width: $bp-md) {
+    display: none;
+  }
   color: $color-text-muted;
+
+  &:hover {
+    color: $color-text;
+
+    .scroll-cta__label {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .scroll-cta__arrow {
+      animation-play-state: paused;
+      transform: translateY(5px);
+    }
+  }
 
   &.is-hidden {
     opacity: 0;
@@ -711,5 +1316,27 @@ h2 {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroScale {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
   }
 }
