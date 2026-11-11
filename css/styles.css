@@ -645,7 +645,7 @@ h2 {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 1.25rem; }
+    margin-bottom: 2rem; }
   .service-detail__icon {
     color: #716b66; }
     .service-detail--dark .service-detail__icon {
@@ -675,6 +675,10 @@ h2 {
     .service-detail--dark .service-detail__aside {
       background-color: rgba(255, 255, 255, 0.05);
       border-color: rgba(255, 255, 255, 0.12); }
+    .service-detail__aside--photo {
+      background-color: transparent;
+      border: none;
+      padding: 0; }
   .service-detail__aside-title {
     font-size: 0.8rem;
     color: #716b66;
@@ -705,6 +709,40 @@ h2 {
         color: rgba(255, 255, 255, 0.8); }
         .service-detail--dark .service-detail__list li::before {
           background-color: rgba(255, 255, 255, 0.35); }
+
+.music-links {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap; }
+  .music-links__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+    min-width: 10rem; }
+  .music-links__site {
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1A1818;
+    text-decoration: none;
+    border-bottom: 1.5px solid #E3DFD9;
+    padding-bottom: 0.5rem; }
+    .music-links__site:hover {
+      color: #2C2F35;
+      border-color: #2C2F35; }
+  .music-links__social {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem; }
+    .music-links__social a {
+      font-size: 0.875rem;
+      color: #716b66;
+      text-decoration: none; }
+      .music-links__social a:hover {
+        color: #1A1818; }
 
 .contact-cta {
   padding: 7rem 0 8rem; }
@@ -748,6 +786,13 @@ h2 {
     font-size: .85rem;
     font-weight: 400;
     color: #716b66; }
+  .site-footer__linkedin {
+    font-size: .85rem;
+    font-weight: 400;
+    color: #716b66;
+    text-decoration: none; }
+    .site-footer__linkedin:hover {
+      color: #1A1818; }
 
 .reveal {
   opacity: 0;
