@@ -801,6 +801,12 @@ h2 {
     opacity: 1;
     transform: translateY(0); }
 
+@media (max-width: 768px) {
+  .hero__inner {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards; } }
+
 /* ================================================================
    ANIMATION #3 — Scale + Stagger (desktop) — saved for reference
 @media (min-width: 769px) {
@@ -832,33 +838,24 @@ h2 {
 ================================================================ */
 /* ================================================================
    ANIMATION #5 — Typewriter + Cascade (desktop)
-   TEMPORARILY DISABLED FOR SCREENSHOT
    ================================================================ */
-/* SCREENSHOT-DISABLE-START
 @media (min-width: 769px) {
-  // Eyebrow stays hidden; block-level flex + fixed height holds space while text is empty
   .hero__eyebrow {
     opacity: 0;
     display: flex;
-    height: 1.75rem;
-  }
+    height: 1.75rem; }
 
   .hero__eyebrow.is-typing {
-    opacity: 1;
-    &::after {
+    opacity: 1; }
+    .hero__eyebrow.is-typing::after {
       content: '|';
       margin-left: 2px;
       font-weight: 300;
-      animation: cursorBlink 0.65s step-end infinite;
-    }
-  }
+      animation: cursorBlink 0.65s step-end infinite; }
 
-  // Keep eyebrow visible once typing is done
-  .hero--typed .hero__eyebrow { opacity: 1; }
+  .hero--typed .hero__eyebrow {
+    opacity: 1; }
 
-  // Cascade fires immediately on load
-  // #4 gradient wipe on the name
-  // padding-bottom pulls the mask area down to include descenders (y, etc.)
   .hero__name {
     padding-bottom: 0.3em;
     margin-bottom: calc(2rem - 0.3em);
@@ -870,23 +867,27 @@ h2 {
     mask-position: 200% 0;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-    animation: heroWipe 1.1s $ease-out 0.10s forwards;
-  }
-  .hero__h1       { opacity: 0; animation: heroFadeUp  0.9s $ease-out 0.35s forwards; }
-  .hero__tagline  { opacity: 0; animation: heroFadeUp  1.0s $ease-out 0.60s forwards; }
-  .hero__location { opacity: 0; animation: heroFadeUp  0.9s $ease-out 0.75s forwards; }
-  .hero__cta-wrap { opacity: 0; animation: heroFadeUp  0.9s $ease-out 1.05s forwards; }
-  .scroll-cta     { opacity: 0; animation: heroFadeUp  0.9s $ease-out 1.35s forwards; }
-}
-SCREENSHOT-DISABLE-END */
-@media (min-width: 769px) {
-  .hero__name {
-    -webkit-mask-position: 0% 0;
-    mask-position: 0% 0;
-    animation: none; }
+    animation: heroWipe 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards; }
 
-  .hero__eyebrow {
-    opacity: 1; } }
+  .hero__h1 {
+    opacity: 0;
+    animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards; }
+
+  .hero__tagline {
+    opacity: 0;
+    animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards; }
+
+  .hero__location {
+    opacity: 0;
+    animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards; }
+
+  .hero__cta-wrap {
+    opacity: 0;
+    animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.05s forwards; }
+
+  .scroll-cta {
+    opacity: 0;
+    animation: heroFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.35s forwards; } }
 @keyframes cursorBlink {
   0%, 100% {
     opacity: 1; }
