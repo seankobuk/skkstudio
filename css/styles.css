@@ -230,7 +230,7 @@ h2 {
       animation: navLinkIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.36s forwards; }
   .mobile-nav__call {
     font-family: "Outfit", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 1.125rem;
+    font-size: 2rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.85);
     letter-spacing: 0.02em;
@@ -574,8 +574,7 @@ h2 {
   margin: 0 auto; }
 
 .page-hero {
-  padding: 4rem 0 5rem;
-  background-color: #F8F7F4; }
+  padding: 4rem 0 5rem; }
   @media (max-width: 768px) {
     .page-hero {
       padding: 3rem 0 3.5rem; } }

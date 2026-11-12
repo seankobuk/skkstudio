@@ -364,7 +364,7 @@ h2 {
 
   &__call {
     font-family: $font-display;
-    font-size: 1.125rem;
+    font-size: 2rem;
     font-weight: 500;
     color: rgba(#fff, 0.85);
     letter-spacing: 0.02em;
@@ -861,7 +861,6 @@ h2 {
 
 .page-hero {
   padding: 4rem 0 5rem;
-  background-color: $color-bg;
 
   @media (max-width: $bp-md) {
     padding: 3rem 0 3.5rem;
