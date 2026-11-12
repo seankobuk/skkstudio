@@ -423,7 +423,6 @@ h2 {
   align-items: center;
   min-height: calc(100vh - 6rem);
   padding-bottom: 5rem;
-  overflow: hidden;
 
   @media (max-width: $bp-md) {
     min-height: unset;
@@ -431,8 +430,44 @@ h2 {
     padding: 3rem 0 3rem;
   }
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../img/page-bg.webp');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    filter: grayscale(100%) contrast(600%) brightness(25%);
+    mask-image: radial-gradient(ellipse 90% 80% at 50% 45%, black 0%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 45%, black 0%, transparent 72%);
+    pointer-events: none;
+    z-index: 0;
+
+    @media (max-width: $bp-md) {
+      display: none;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 55% 70% at 42% 55%, rgba($color-bg, 0.9) 0%, rgba($color-bg, 0.45) 50%, transparent 80%);
+    pointer-events: none;
+    z-index: 0;
+
+    @media (max-width: $bp-md) {
+      display: none;
+    }
+  }
+
   &__bg-glow {
-    display: none; // gradient moved to body background-image
+    display: none;
   }
 
   &__inner {
@@ -461,7 +496,7 @@ h2 {
 
   &__h1 {
     font-family: $font-body;
-    font-size: clamp(1rem, 1.5vw, 1.25rem);
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
     font-weight: 500;
     color: $color-text-muted;
     line-height: 1.4;
@@ -470,7 +505,7 @@ h2 {
 
   &__name {
     font-family: $font-display;
-    font-size: clamp(3rem, 9vw, 7rem);
+    font-size: clamp(2.5rem, 7.5vw, 5.5rem);
     font-weight: 800;
     letter-spacing: -0.01em;
     line-height: 0.9;
@@ -560,7 +595,10 @@ h2 {
   }
 
   &__img {
-    height: 80px;
+    height: 100px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
     width: auto;
     object-fit: contain;
     filter: grayscale(100%);
@@ -1166,6 +1204,9 @@ h2 {
   }
 
   &__linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
     font-size: .85rem;
     font-weight: 400;
     color: $color-text-muted;
