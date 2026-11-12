@@ -1194,13 +1194,14 @@ h2 {
 }
 
 // Mobile: animate the whole block as one
-.hero__inner {
-  @media (max-width: $bp-md) {
-    opacity: 0;
-    transform: translateY(12px);
-    animation: fadeUp 0.9s $ease-out 0.15s forwards;
-  }
-}
+// TEMPORARILY DISABLED FOR SCREENSHOT
+// .hero__inner {
+//   @media (max-width: $bp-md) {
+//     opacity: 0;
+//     transform: translateY(12px);
+//     animation: fadeUp 0.9s $ease-out 0.15s forwards;
+//   }
+// }
 
 /* ================================================================
    ANIMATION #3 — Scale + Stagger (desktop) — saved for reference
@@ -1234,7 +1235,9 @@ h2 {
 
 /* ================================================================
    ANIMATION #5 — Typewriter + Cascade (desktop)
+   TEMPORARILY DISABLED FOR SCREENSHOT
    ================================================================ */
+/* SCREENSHOT-DISABLE-START
 @media (min-width: 769px) {
   // Eyebrow stays hidden; block-level flex + fixed height holds space while text is empty
   .hero__eyebrow {
@@ -1278,6 +1281,18 @@ h2 {
   .hero__cta-wrap { opacity: 0; animation: heroFadeUp  0.9s $ease-out 1.05s forwards; }
   .scroll-cta     { opacity: 0; animation: heroFadeUp  0.9s $ease-out 1.35s forwards; }
 }
+SCREENSHOT-DISABLE-END */
+
+// TEMPORARY: show hero__name fully visible for screenshot
+@media (min-width: 769px) {
+  .hero__name {
+    -webkit-mask-position: 0% 0;
+    mask-position: 0% 0;
+    animation: none;
+  }
+  .hero__eyebrow { opacity: 1; }
+}
+// END TEMPORARY
 
 @keyframes cursorBlink {
   0%, 100% { opacity: 1; }
