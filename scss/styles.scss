@@ -558,7 +558,7 @@ h2 {
     padding: 1.5rem 0;
     margin-top: calc(80px + 0.5rem);
   }
-  background-color: $color-bg;
+  background-color: #eceae5;
   border-top: 1px solid $color-border;
   border-bottom: 1px solid $color-border;
   overflow: hidden;
@@ -1191,8 +1191,8 @@ h2 {
 // ——————————————————————————————————————————
 
 .site-footer {
-  padding: 1.5rem 0;
-  border-top: 4px solid $color-border-light;
+  padding: 2.5rem 0;
+  border-top: 1px solid $color-border;
 
   .container {
     max-width: 1320px;
@@ -1202,41 +1202,54 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.5rem 1rem;
+    gap: 1.5rem;
 
     @media (max-width: $bp-sm) {
-      justify-content: center;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
     }
   }
 
-  &__location {
-    font-size: .85rem;
-    font-weight: 400;
-    color: $color-text-muted;
-    letter-spacing: 0.03em;
+  &__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
 
-    @media (max-width: $bp-sm) {
-      display: none;
-    }
+  &__name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: $color-text;
+    letter-spacing: 0.01em;
   }
 
   &__copy {
-    font-size: .85rem;
-    font-weight: 400;
+    font-size: 0.8rem;
     color: $color-text-muted;
   }
 
-  &__linkedin {
-    display: inline-flex;
+  &__nav {
+    display: flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: .85rem;
-    font-weight: 400;
-    color: $color-text-muted;
-    text-decoration: none;
+    gap: 2rem;
 
-    &:hover { color: $color-text; }
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: $color-text-muted;
+      text-decoration: none;
+      transition: color $duration-base $ease-base;
+
+      &:hover { color: $color-text; }
+    }
+
+    @media (max-width: $bp-sm) {
+      gap: 1.5rem;
+    }
   }
 }
 
