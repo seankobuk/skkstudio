@@ -19,7 +19,8 @@ body {
   color: #1A1818;
   background-color: #F8F7F4;
   background-image: radial-gradient(ellipse 55% 65% at 92% 35%, rgba(227, 223, 217, 0.5) 0%, transparent 70%);
-  background-attachment: fixed;
+  background-attachment: scroll;
+  background-size: 100% auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -27,7 +28,6 @@ body {
 @media (max-width: 768px) {
   body {
     background-image: none;
-    background-attachment: initial;
   }
 }
 
@@ -997,9 +997,10 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .site-footer__inner {
     flex-direction: column;
     align-items: flex-start;
@@ -1010,6 +1011,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  flex: 0 0 auto;
 }
 .site-footer__name {
   font-size: 0.95rem;
@@ -1020,11 +1022,13 @@ h2 {
 .site-footer__copy {
   font-size: 0.8rem;
   color: #716b66;
+  white-space: nowrap;
 }
 .site-footer__nav {
   display: flex;
   align-items: center;
   gap: 2rem;
+  flex: 0 0 auto;
 }
 .site-footer__nav a {
   display: inline-flex;
@@ -1038,11 +1042,6 @@ h2 {
 }
 .site-footer__nav a:hover {
   color: #1A1818;
-}
-@media (max-width: 480px) {
-  .site-footer__nav {
-    gap: 1.5rem;
-  }
 }
 
 .reveal {
