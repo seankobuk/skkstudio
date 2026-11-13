@@ -150,12 +150,14 @@ h2 {
     display: none;
   }
 }
+.site-header .btn--primary {
+  margin-left: auto;
+}
 
 .menu-toggle {
   display: flex;
   position: relative;
   z-index: 201;
-  margin-left: auto;
   width: 2.5rem;
   height: 2.5rem;
   flex-direction: column;
