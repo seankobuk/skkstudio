@@ -239,10 +239,9 @@ h2 {
 
 .menu-toggle {
   display: flex;
-  position: fixed;
-  top: 1.25rem;
-  right: $container-pad;
+  position: relative;
   z-index: 201;
+  margin-left: auto;
   width: 2.5rem;
   height: 2.5rem;
   flex-direction: column;
