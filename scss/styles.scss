@@ -1211,7 +1211,8 @@ h2 {
 
     @media (max-width: $bp-md) {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      text-align: center;
       gap: 1.25rem;
     }
   }
