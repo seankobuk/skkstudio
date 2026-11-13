@@ -1085,6 +1085,30 @@ h2 {
   }
 }
 
+.service-detail--dark {
+  .btn--outline {
+    border-color: rgba(#fff, 0.6);
+    color: #fff;
+
+    &:hover {
+      background-color: rgba(#fff, 0.12);
+      border-color: #fff;
+      color: #fff;
+    }
+  }
+
+  .btn--primary {
+    background-color: #fff;
+    border-color: #fff;
+    color: $color-accent;
+
+    &:hover {
+      background-color: rgba(#fff, 0.88);
+      border-color: rgba(#fff, 0.88);
+    }
+  }
+}
+
 // ——————————————————————————————————————————
 // Music Links
 // ——————————————————————————————————————————
