@@ -234,6 +234,7 @@ h2 {
 
   .btn--primary {
     margin-left: auto;
+    @media (max-width: 600px) { display: none; }
   }
 }
 

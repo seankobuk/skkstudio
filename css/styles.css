@@ -153,6 +153,11 @@ h2 {
 .site-header .btn--primary {
   margin-left: auto;
 }
+@media (max-width: 600px) {
+  .site-header .btn--primary {
+    display: none;
+  }
+}
 
 .menu-toggle {
   display: flex;
