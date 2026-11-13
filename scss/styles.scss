@@ -262,6 +262,10 @@ h2 {
   }
 
   &.is-active {
+    position: fixed;
+    top: 1.25rem;
+    right: $container-pad;
+
     span {
       background-color: #fff;
       &:first-child { transform: translateY(4.25px) rotate(45deg); }
